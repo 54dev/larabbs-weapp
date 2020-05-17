@@ -18,18 +18,16 @@
 
 <script>
   import wepy from '@wepy/core'
+  import store from '@/store'
+  import { mapGetters } from '@wepy/x'
 
   wepy.page({
+    store,
     config: {
       navigationBarTitleText: '我的'
     },
-    data: {
-      loggedIn: false
-    },
-    onShow() {
-      if (wx.getStorageSync('access_token')) {
-        this.loggedIn = true
-      }
+    computed: {
+      ...mapGetters(['isLoggedIn'])
     }
   })
 </script>
